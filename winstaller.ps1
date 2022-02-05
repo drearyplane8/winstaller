@@ -37,9 +37,12 @@ else {
     }
 }
 
+#make sure we have an absolute path before we add to the PATH
+$TargetDirectoryAbsolute = Resolve-Path $TargetDirectory
+
 #add the new file to the path, but only if it's not already there 
-if ( -Not (Select-String -InputObject $env:Path -Pattern $TargetDirectory -SimpleMatch -Quiet) ) {
+if ( -Not (Select-String -InputObject $env:Path -Pattern $TargetDirectoryAbsolute -SimpleMatch -Quiet) ) {
     #set the path to the current path + target directory, change it for the entire machine. 
-    [System.Environment]::SetEnvironmentVariable("PATH", $env:Path + "$TargetDirectory", [System.EnvironmentVariableTarget]::Machine)
+    [System.Environment]::SetEnvironmentVariable("PATH", $env:Path + "$TargetDirectoryAbsolute", [System.EnvironmentVariableTarget]::Machine)
 }   
 
