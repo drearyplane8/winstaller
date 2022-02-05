@@ -6,7 +6,7 @@ Fellow Windows plebs, ever felt like this? Constantly adding things to your envi
 
 Winstaller takes files (or a directory), copies them to a new location, and adds that new folder to the PATH! 
 
-##Usage:
+## Usage:
 
 File Mode
 ` .\winstaller.ps1 -InputFiles file1, file2, file3 -TargetDirectory path\to\target\`
